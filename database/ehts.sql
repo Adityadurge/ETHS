@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2023 at 09:40 AM
+-- Generation Time: Dec 21, 2023 at 12:40 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -28,13 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `Username` varchar(40) NOT NULL,
-  `Password` varchar(40) NOT NULL,
+  `Password` varchar(100) NOT NULL,
   `Name` varchar(40) NOT NULL,
   `Mobile` bigint(20) NOT NULL,
   `Email` varchar(40) NOT NULL,
   `Token` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`Password`, `Name`, `Mobile`, `Email`, `Token`) VALUES
+('$2y$10$hMvj7nmYavKDMh4pavZIoO9ml8oMzHp68RKL.GacLUBX/NmVFb.Au', 'Akash Harale ', 8291394598, 'akash@gmail.com', 'XtDw6MmjcR');
 
 -- --------------------------------------------------------
 
@@ -224,7 +230,7 @@ CREATE TABLE `pathologist` (
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`Username`);
+  ADD PRIMARY KEY (`Email`);
 
 --
 -- Indexes for table `clinic`

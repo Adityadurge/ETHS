@@ -16,7 +16,9 @@
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
 	<!-- TITLE -->
-	<title><?= @$title; ?></title> <!-- DASHBOARD CSS -->
+	<title>
+		<?= @$title; ?>
+	</title> <!-- DASHBOARD CSS -->
 	<link href="<?= base_url(); ?>template/assets/css/dashboard.css" rel="stylesheet" />
 
 	<!-- SIDE-MENU CSS -->
@@ -50,9 +52,9 @@
 			color: red;
 		}
 
-		.login_alert{
+		.login_alert {
 			max-width: 24rem;
-			margin :;
+			margin: ;
 		}
 	</style>
 
@@ -79,20 +81,19 @@
 
 
 				<?php
-				
-					$message = $this->session->flashdata("Message");
 
-					if(isset($message))
-					{
-						echo'<div class="alert login_alert alert-danger mx-auto alert-dismissible fade show" role="alert">
-  <strong>Error</strong> '.$message.'
+				$message = $this->session->flashdata("Message");
+
+				if (isset($message)) {
+					echo '<div class="alert login_alert alert-danger mx-auto alert-dismissible fade show" role="alert">
+  <strong>Error</strong> ' . $message . '
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>   
 </div>';
-					}
-				
-				
+				}
+
+
 				?>
 
 
@@ -100,13 +101,16 @@
 				<div class="container-login100">
 					<div class="wrap-login100 p-6">
 
-						<form class="login100-form validate-form " method="post" action="<?= base_url(); ?>Login/authenticate">
+						<form class="login100-form validate-form " method="post"
+							action="<?= base_url(); ?>Login/authenticate">
 
 							<span class="login100-form-title">
 								Login
 							</span>
 							<?= @$this->session->flashdata('result'); ?>
-							<select name="user_type" class="form-select form-select-lg mb-3 mx-auto d-block w-100 wrap-input100 border-0 input100 " aria-label="Large select example">
+							<select name="user_type"
+								class="form-select form-select-lg mb-3 mx-auto d-block w-100 wrap-input100 border-0 input100 "
+								aria-label="Large select example">
 								<option selected>Login as</option>
 								<option value="Admin">Admin</option>
 								<option value="Company">Company</option>
@@ -119,14 +123,19 @@
 								<option value="Employee">Employee</option>
 
 							</select>
-							<div class="text-danger"><?php echo form_error("user_type"); ?></div>
-							<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+							<div class="text-danger">
+								<?php echo form_error("user_type"); ?>
+							</div>
+							<div class="wrap-input100 validate-input"
+								data-validate="Valid email is required: ex@abc.xyz">
 								<input class="input100" type="email" name="email" placeholder="Email">
 								<span class="focus-input100"></span>
 								<span class="symbol-input100">
 									<i class="zmdi zmdi-email" aria-hidden="true"></i>
 								</span>
-								<div class="text-danger"><?php echo form_error("email"); ?></div>
+								<div class="text-danger">
+									<?php echo form_error("email"); ?>
+								</div>
 							</div>
 							<div class="wrap-input100 validate-input" data-validate="Password is required">
 								<input class="input100" type="password" name="password" placeholder="Password">
@@ -134,11 +143,14 @@
 								<span class="symbol-input100">
 									<i class="zmdi zmdi-lock" aria-hidden="true"></i>
 								</span>
-								<div class="text-danger"><?php echo form_error("password"); ?></div>
+								<div class="text-danger">
+									<?php echo form_error("password"); ?>
+								</div>
 							</div>
 							<input type="hidden" name="login_as" id="login_as_input" value="">
 							<div class="text-right pt-1">
-								<p class="mb-0"><a href="forgot-password.html" class="text-primary ml-1">Forgot Password?</a></p>
+								<p class="mb-0"><a href="forgot-password.html" class="text-primary ml-1">Forgot
+										Password?</a></p>
 							</div>
 							<div class="container-login100-form-btn">
 								<button name="login" class="login100-form-btn btn-primary">
@@ -179,8 +191,12 @@
 	<!-- CUSTOM JS-->
 	<script src="<?= base_url(); ?>template/assets/js/custom.js"></script>
 
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+		integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+		integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+		crossorigin="anonymous"></script>
 
 </body>
 
