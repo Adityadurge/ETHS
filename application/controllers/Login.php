@@ -15,7 +15,6 @@ class Login extends CI_Controller
 
             if ($this->form_validation->run() == false) {
                 $this->load->view("login");
-
             } else {
                 //Admin
                 $user = $this->input->post("user_type");
@@ -39,9 +38,6 @@ class Login extends CI_Controller
                         redirect("Home/login");
                     }
                 }
-
-
-
             }
         }
     }
