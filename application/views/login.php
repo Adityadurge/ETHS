@@ -49,6 +49,11 @@
 		.error {
 			color: red;
 		}
+
+		.login_alert{
+			max-width: 24rem;
+			margin :;
+		}
 	</style>
 
 </head>
@@ -71,6 +76,27 @@
 						<img src="<?= base_url(); ?>template/logo.jpeg" class="" alt="">
 					</div>
 				</div>
+
+
+				<?php
+				
+					$message = $this->session->flashdata("Message");
+
+					if(isset($message))
+					{
+						echo'<div class="alert login_alert alert-danger mx-auto alert-dismissible fade show" role="alert">
+  <strong>Error</strong> '.$message.'
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>   
+</div>';
+					}
+				
+				
+				?>
+
+
+
 				<div class="container-login100">
 					<div class="wrap-login100 p-6">
 

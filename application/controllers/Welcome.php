@@ -20,6 +20,11 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		// $this->load->view('welcome_message');
+	
+	   $pass="Admin";
+	   $crypted= password_hash($pass,PASSWORD_BCRYPT);
+	   echo $crypted;
+		
 	}
 }

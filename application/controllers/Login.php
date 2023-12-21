@@ -15,9 +15,37 @@ class Login extends CI_Controller
 
             if ($this->form_validation->run() == false) {
                 $this->load->view("login");
+
             } else {
-                echo $this->input->post("user_type");
-                echo $this->input->post("email") . " " . $this->input->post("password");
+                //Admin
+                $user= $this->input->post("user_type");
+                $Email= $this->input->post("email");
+                 $pass=$this->input->post("password");
+                
+                if($user=="Admin")
+                {
+                    $data=["Email"=>$Email,"User"=>$user,"Password"=>$pass];
+                    
+                    $this->load->Model("Authenticate");
+                  $result = $this->Authenticate->authenticate($data);
+                  if($result["Status"]==True)
+                  {
+                    $this->load->helper('string');
+                    $token=random_string('alnum',10);
+                   $r= $this->Authenticate->updateLoginToken($data,$token);
+                //    print_r($r);
+                    $this->session->set_userdata("token",$token);
+                    redirect("Admin");
+                  }
+                  else
+                  {
+                        $this->session->set_flashdata("Message",$result["Message"]);
+                        redirect("Home/login");
+                  }
+                }
+
+
+
             }
         }
     }

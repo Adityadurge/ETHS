@@ -6,4 +6,8 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('login');
 	}
+	public function login()
+	{
+		$this->load->view('login');
+	}
 }
