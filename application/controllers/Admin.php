@@ -12,13 +12,14 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Authenticate');
+        $this->load->model('AdminModel');
 
         if ($this->session->userdata('token')) {
             $this->userRow = $this->db->query("SELECT * FROM Admin WHERE Token='" . $this->session->userdata('token') . "'")->row();
             if (!$this->userRow)
-                redirect("Home");
+                redirect("Home/login");
         } else
-            redirect("Home");
+            redirect("Home/login");
     }
 
     public function index()
@@ -40,8 +41,53 @@ class Admin extends CI_Controller
 
     public function add()
     {
-        $this->header("Add user");
-        $this->load->view("AdminDash/add");
-        $this->load->view('AdminDash/footer');
+        if ($this->input->post()) {
+
+            $this->form_validation->set_rules("Email", "email", "required|valid_email|trim");
+            $this->form_validation->set_rules("Password", "password", "required|trim");
+            $this->form_validation->set_rules("Name", "name", "required|trim");
+            $this->form_validation->set_rules("Reg_No", "registration", "required|trim");
+            $this->form_validation->set_rules("Address", "address", "required|trim|max_length[100]");
+            $this->form_validation->set_rules("Mobile", "mobile", "required|exact_length[10]|trim");
+
+
+            if ($this->form_validation->run() == false) {
+                $this->add();
+            } else {
+
+
+                $data = $this->input->post();
+                $response = $this->AdminModel->add_clinic($this->input->post());
+                $this->session->set_flashdata("Response", $response);
+                if ($response["Status"] == "ok") {
+                    // $this->load->view("AdminDash/add");
+                    redirect("Admin/add");
+
+                } else {
+                    $data=["data"=>$data];
+                    // print_r($data);
+                    $this->header("Add user");
+                    $this->load->view("AdminDash/add", $data);
+                    $this->load->view('AdminDash/footer');
+                }
+            }
+        }
+        else
+        {
+            $this->header("Add user");
+            $this->load->view("AdminDash/add");
+            $this->load->view('AdminDash/footer');
+
+        }
+
+        
+      
+        
+    }
+
+
+    public function add_clinic()
+    {
+       
     }
 }

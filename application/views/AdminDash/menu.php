@@ -45,7 +45,7 @@
                                     <a class="dropdown-item" href="<?= base_url() . "Admin/user/" . @$user->id; ?>">
                                         <i class="dropdown-icon mdi mdi-account-outline"></i> Profile
                                     </a>
-                                    <a class="dropdown-item" href="<?= base_url() . "Welcome/logout"; ?>">
+                                    <a class="dropdown-item" href="<?= base_url() . "Login/logout"; ?>">
                                         <i class="dropdown-icon mdi  mdi-logout-variant"></i> Sign out
                                     </a>
                                 </div>

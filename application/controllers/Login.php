@@ -53,4 +53,9 @@ class Login extends CI_Controller
         }
         return true;
     }
+    public function logout()
+	{
+		session_destroy();
+		redirect("Home/Login");
+	}
 }

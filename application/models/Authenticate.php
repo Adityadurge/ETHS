@@ -7,8 +7,8 @@ class Authenticate extends CI_Model
     {
         $dbdata = $this->db->where("Email", $data["Email"])->get($data["User"]);
         $dbdata = $dbdata->row();
-        echo "<pre>";
-        print_r($dbdata);
+        // echo "<pre>";
+        // print_r($dbdata);
         if ($dbdata) {
             if (password_verify($data["Password"], $dbdata->Password)) {
                 return ["Status" => True, "Message" => "Password Matched"];
